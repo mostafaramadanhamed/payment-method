@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/models/payment_intent_input_model.dart';
@@ -15,5 +16,11 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       (failure) => emit(CheckoutFailure(message: failure.message)),
       (_) => emit(CheckoutSuccess(message: 'Payment Successful')),
     );
+  }
+
+  @override
+  void onChange(Change<CheckoutState> change) {
+    debugPrint(change.toString());
+    super.onChange(change);
   }
 }
