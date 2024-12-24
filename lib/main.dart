@@ -17,4 +17,3 @@ class CheckoutApp extends StatelessWidget {
   }
 }
 
-// create payment inyent(currency, amount)
