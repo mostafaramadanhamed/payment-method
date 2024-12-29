@@ -1,4 +1,3 @@
-
 import 'tip.dart';
 
 class AmountDetails {

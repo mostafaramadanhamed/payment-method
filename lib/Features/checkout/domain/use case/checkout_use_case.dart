@@ -1,4 +1,4 @@
- import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz.dart';
 
 import '../../../../core/service/error_handling.dart';
 import '../../data/models/payment_intent_input_model.dart';
@@ -9,7 +9,9 @@ class CheckoutUseCase {
 
   CheckoutUseCase(this.repository);
 
-   Future<Either<Failure, void>> makePayment({required PaymentIntentInputModel paymentIntentInputModel}) async {
-    return await repository.makePayment(paymentIntentInputModel: paymentIntentInputModel);
+  Future<Either<Failure, void>> makePayment(
+      {required PaymentIntentInputModel paymentIntentInputModel}) async {
+    return await repository.makePayment(
+        paymentIntentInputModel: paymentIntentInputModel);
   }
- }
+}

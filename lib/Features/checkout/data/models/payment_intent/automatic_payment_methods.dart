@@ -1,4 +1,3 @@
-
 class AutomaticPaymentMethods {
   final bool? enabled;
 

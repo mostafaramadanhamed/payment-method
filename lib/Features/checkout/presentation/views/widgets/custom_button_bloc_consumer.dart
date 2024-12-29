@@ -37,21 +37,21 @@ class CustomButtonBlocConsumer extends StatelessWidget {
             ),
           );
         }
-      
       },
       builder: (context, state) {
         return CustomButton(
           onTap: () {
-         BlocProvider.of<CheckoutCubit>(context).makePayment(paymentIntentInputModel: 
-          PaymentIntentInputModel(
-            amount: '100',
-            currency: 'USD', customerId: 'cus_RUFHTbF3DXVXkG',
-         ),
-          );
+            BlocProvider.of<CheckoutCubit>(context).makePayment(
+              paymentIntentInputModel: PaymentIntentInputModel(
+                amount: '100',
+                currency: 'USD',
+                customerId: 'cus_RUFHTbF3DXVXkG',
+              ),
+            );
           },
-          
           text: 'Continue',
-          isLoading: state is CheckoutLoading? true : false,);
+          isLoading: state is CheckoutLoading ? true : false,
+        );
       },
     );
   }

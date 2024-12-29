@@ -9,9 +9,11 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   final CheckoutUseCase checkoutUseCase;
   CheckoutCubit(this.checkoutUseCase) : super(CheckoutLoading());
 
-  Future<void> makePayment({required PaymentIntentInputModel paymentIntentInputModel}) async {
+  Future<void> makePayment(
+      {required PaymentIntentInputModel paymentIntentInputModel}) async {
     emit(CheckoutLoading());
-    final result = await checkoutUseCase.makePayment(paymentIntentInputModel: paymentIntentInputModel);
+    final result = await checkoutUseCase.makePayment(
+        paymentIntentInputModel: paymentIntentInputModel);
     result.fold(
       (failure) => emit(CheckoutFailure(message: failure.message)),
       (_) => emit(CheckoutSuccess(message: 'Payment Successful')),

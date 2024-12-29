@@ -12,7 +12,8 @@ class PaymentMethodOptions {
     return PaymentMethodOptions(
       card: json['cardClaCardClass'] == null
           ? null
-          : CardClass.fromJson(json['cardClaCardClass'] as Map<String, dynamic>),
+          : CardClass.fromJson(
+              json['cardClaCardClass'] as Map<String, dynamic>),
       link: json['link'] == null
           ? null
           : Link.fromJson(json['link'] as Map<String, dynamic>),

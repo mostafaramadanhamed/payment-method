@@ -1,4 +1,3 @@
-
 class CardClass {
   final dynamic installments;
   final dynamic mandateOptions;

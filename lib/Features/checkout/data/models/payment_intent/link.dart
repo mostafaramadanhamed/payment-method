@@ -1,4 +1,3 @@
-
 class Link {
   final dynamic persistentToken;
 
