@@ -45,7 +45,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
          BlocProvider.of<CheckoutCubit>(context).makePayment(paymentIntentInputModel: 
           PaymentIntentInputModel(
             amount: '100',
-            currency: 'USD',
+            currency: 'USD', customerId: 'cus_RUFHTbF3DXVXkG',
          ),
           );
           },
