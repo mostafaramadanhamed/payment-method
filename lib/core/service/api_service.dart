@@ -7,13 +7,14 @@ class ApiService {
       {required String url,
       required dynamic body,
       required String token,
+      Map<String, dynamic>?headers ,
       String? contentType}) async {
     final response = await _dio.post(
       url,
       data: body,
       options: Options(
         contentType: contentType,
-        headers: {
+        headers: headers??{
           'Authorization': 'Bearer $token',
         },
       ),
