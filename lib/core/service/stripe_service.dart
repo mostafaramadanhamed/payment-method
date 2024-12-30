@@ -21,7 +21,7 @@ class StripeService {
 Future<EphemeralKeyMode> createEphemeralKey(
      {required String customerId}) async {
     final response = await _apiService.post(
-      url: 'https://api.stripe.com/v1/payment_intents',
+      url: 'https://api.stripe.com/v1/ephemeral_keys',
       body: {
         'customer': customerId,
       },
@@ -35,10 +35,12 @@ Future<EphemeralKeyMode> createEphemeralKey(
     return EphemeralKeyMode.fromJson(response.data);
   }
 
-  Future initPaymentSheet({required String paymentIntentClientSecret}) async {
+  Future initPaymentSheet({required String paymentIntentClientSecret, required String ephemeralKey}) async {
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
         paymentIntentClientSecret: paymentIntentClientSecret,
+        customerEphemeralKeySecret: ephemeralKey,
+        customerId: 'cus_RUFHTbF3DXVXkG',
         merchantDisplayName: 'Mostafa',
       ),
     );
@@ -53,7 +55,10 @@ Future<EphemeralKeyMode> createEphemeralKey(
   }) async {
     final paymentIntentModel =
         await createPaymentIntent(paymentIntentInputModel);
+    final ephemeralKey = await createEphemeralKey(customerId: 'cus_RUFHTbF3DXVXkG');
+
     await initPaymentSheet(
+        ephemeralKey: ephemeralKey.secret!,
         paymentIntentClientSecret: paymentIntentModel.clientSecret!);
     await displayPaymentSheet();
   }
